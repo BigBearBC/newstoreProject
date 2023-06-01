@@ -147,6 +147,12 @@
 </body>
 <!--author : hzy-->
 <script type="text/javascript">
+    //登录的时候设置cookie中保存的头像
+    $(document).ready(function () {
+        let avatar = $.cookie("avatar");
+        $("#img-avatar").attr("src", avatar);
+    });
+
     //给登录按钮添加监听
     $("#btn-login").click(function () {
         $.ajax({
@@ -158,6 +164,7 @@
                 if (json.code === 200) {
                     alert("登陆成功");
                     location.href = "index.html";
+                    $.cookie("avatar",json.result.avatar,{expires:7});
                 } else {
                     alert("登陆失败");
                 }

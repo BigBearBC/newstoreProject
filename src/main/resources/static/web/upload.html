@@ -13,6 +13,7 @@
     <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
     <script src="../bootstrap3/jquery-1.9.1.min.js"></script>
     <script src="../bootstrap3/js/bootstrap.js"></script>
+    <script src="../bootstrap3/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
     <!-- 字体图标 -->
     <link rel="stylesheet" href="../bootstrap3/font-awesome-4.7.0/css/font-awesome.css"/>
     <link rel="stylesheet" type="text/css" href="../css/layout.css"/>
@@ -248,6 +249,7 @@
 </body>
 
 <script type="text/javascript">
+
     $("#btn-change-avatar").click(function () {
         $.ajax({
             url: "/users/updatePersonAvatar",
@@ -261,7 +263,8 @@
                     alert("头像修改成功");
                     //设置图像中的src属性来解决头像回显问题
                     //attr设置某一个属性的某一个值
-                    $("#img-avatar").attr("src",json.result.filePath)
+                    $("#img-avatar").attr("src", json.result.filePath)
+                    $.cookie("avatar",json.result.avatar,{entries:7});
                 } else {
                     alert("头像修改失败");
                 }

@@ -92,7 +92,6 @@ public class UserController {
         return Result.ok(user);
     }
 
-
     /**
      * 上传文件
      *
